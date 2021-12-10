@@ -5,14 +5,14 @@
 #include <string>
 
 void createRandArr(int ArrInt[100])
-	{
+{
 	std::string answer("no");
 	srand(time(NULL));
 	for (int i = 0; i < 100; i++)
 	{
 		ArrInt[i] = rand() % 199 - 99;
 		std::cout << ArrInt[i] << " ";
-	
+
 	}
 	std::cout << std::endl;
 	std::cout << std::endl << "Execute the function createRandArr again?" << std::endl;
@@ -20,36 +20,36 @@ void createRandArr(int ArrInt[100])
 	if (answer == "yes")
 		createRandArr(ArrInt);
 	else return;
-	}
+}
 
 void bubbleSortArr(int ArrInt[100])
-	{
+{
 	int number, i = 0;
-	std::string answer("no");			
-		auto start = std::chrono::high_resolution_clock::now();
-		for (int i = 0; i < 99; i++)
+	std::string answer("no");
+	auto start = std::chrono::high_resolution_clock::now();
+	for (int i = 0; i < 99; i++)
+	{
+		for (int k = i + 1; k < 100; k++)
 		{
-			for (int k = i + 1; k < 100; k++)
+			if (ArrInt[i] > ArrInt[k])
 			{
-				if (ArrInt[i] > ArrInt[k])
-				{
-					number = ArrInt[k];
-					ArrInt[k] = ArrInt[i];
-					ArrInt[i] = number;
-				}
+				number = ArrInt[k];
+				ArrInt[k] = ArrInt[i];
+				ArrInt[i] = number;
 			}
 		}
-		for (int i = 0; i < 100; i++)
-			std::cout << ArrInt[i] << " ";
-		auto end = std::chrono::high_resolution_clock::now();
-		std::chrono::duration<float> duration = end - start;
-		std::cout << std::endl << duration.count() << " - Time spent on sorting with help bubble sort" << std::endl;
-		std::cout << std::endl << "Execute the function bubbleSortArr again?" << std::endl;
-		std::cin >> answer;
-		if (answer == "yes")
-			bubbleSortArr(ArrInt);
-		else return;
 	}
+	for (int i = 0; i < 100; i++)
+		std::cout << ArrInt[i] << " ";
+	auto end = std::chrono::high_resolution_clock::now();
+	std::chrono::duration<float> duration = end - start;
+	std::cout << std::endl << duration.count() << " - Time spent on sorting with help bubble sort" << std::endl;
+	std::cout << std::endl << "Execute the function bubbleSortArr again?" << std::endl;
+	std::cin >> answer;
+	if (answer == "yes")
+		bubbleSortArr(ArrInt);
+	else return;
+}
 
 void shakerSortArr(int ArrInt[100])
 {
@@ -96,7 +96,7 @@ void shakerSortArr(int ArrInt[100])
 }
 
 void findMaxEl(int ArrInt[100])
-	{
+{
 	int max = ArrInt[1];
 	std::string answer("no");
 	auto start = std::chrono::high_resolution_clock::now();
@@ -114,18 +114,14 @@ void findMaxEl(int ArrInt[100])
 	if (answer == "yes")
 		findMaxEl(ArrInt);
 	else return;
-	}
+}
 
 void findMaxElSortedArr(int ArrInt[100])
 {
-	int max = ArrInt[1];
+	int max;
 	std::string answer("no");
 	auto start = std::chrono::high_resolution_clock::now();
-	for (int i = 0; i < 100; ++i)
-	{
-		if (ArrInt[i] > max)
-			max = ArrInt[i];
-	}
+	max = ArrInt[100];
 	std::cout << max << " - Maximum array element" << std::endl;
 	auto end = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<float> duration = end - start;
@@ -160,14 +156,10 @@ void findMinEl(int ArrInt[100])
 
 void findMinElSortedArr(int ArrInt[100])
 {
-	int min = ArrInt[1];
+	int min;
 	std::string answer("no");
 	auto start = std::chrono::high_resolution_clock::now();
-	for (int i = 0; i < 100; ++i)
-	{
-		if (ArrInt[i] < min)
-			min = ArrInt[i];
-	}
+	min = ArrInt[0];
 	std::cout << min << " - Minimum array element" << std::endl;
 	auto end = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<float> duration = end - start;
@@ -190,7 +182,7 @@ void findAverageOfMaxAndMin(int ArrInt[100])
 		if (ArrInt[i] < min)
 			min = ArrInt[i];
 	}
-	mean = round((max + min)/2);
+	mean = round((max + min) / 2);
 	std::cout << mean << " - The average of the maximum and minimum element" << std::endl;
 
 	for (int i = 0; i < 100; ++i)
@@ -199,7 +191,7 @@ void findAverageOfMaxAndMin(int ArrInt[100])
 		{
 			std::cout << i << " ";
 			quantityOfEqual++;
-		}		
+		}
 	}
 	std::cout << std::endl << quantityOfEqual << " - Quantity of elements equal to the average" << std::endl;
 	std::cout << std::endl << "Execute the function findAverageOfMaxAndMin again?" << std::endl;
@@ -219,7 +211,7 @@ void findQuantityOfElementsLessThanGiven(int number, int ArrInt[100])
 		if (ArrInt[i] < number)
 			quantityOfElementsLessThanGiven++;
 	}
-	std::cout << quantityOfElementsLessThanGiven << " - Quantity of elements less than " << number << std::endl;	
+	std::cout << quantityOfElementsLessThanGiven << " - Quantity of elements less than " << number << std::endl;
 	std::cout << std::endl << "Execute the function findQuantityOfElementsLessThanGiven again?" << std::endl;
 	std::cin >> answer;
 	if (answer == "yes")
@@ -231,7 +223,7 @@ void findQuantityOfElementsMoreThanGiven(int number, int ArrInt[100])
 {
 	int quantityOfElementsMoreThanGiven = 0;
 	std::string answer("no");
-	
+
 	for (int i = 0; i < 100; ++i)
 	{
 		if (ArrInt[i] > number)
@@ -257,7 +249,7 @@ void findNumberInArr(int number, int ArrInt[100])
 	}
 	if (availability == true)
 		std::cout << "The number is in the array" << std::endl;
-	else 
+	else
 		std::cout << "The number is not in the array" << std::endl;
 	auto end = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<float> duration = end - start;
@@ -337,7 +329,7 @@ int main() {
 	std::cout << "Enter the number" << std::endl;
 	std::cin >> a;
 	findQuantityOfElementsLessThanGiven(a, ArrInt);
-	
+
 	std::cout << "Enter the number" << std::endl;
 	std::cin >> b;
 	findQuantityOfElementsMoreThanGiven(b, ArrInt);
@@ -348,4 +340,3 @@ int main() {
 	binarySearch(numberToFind, ArrInt);
 	return 0;
 }
-
